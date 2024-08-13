@@ -33,4 +33,10 @@ class Payment extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::observe(new \App\Observers\PaymentActionObserver);
+    }
 }
